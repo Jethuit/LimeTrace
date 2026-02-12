@@ -11,6 +11,8 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\LimeTrace
+UsePreviousAppDir=no
+DisableDirPage=no
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=..\dist\installer
@@ -35,7 +37,7 @@ Source: "..\target\release\limetrace.exe"; DestDir: "{app}"; Flags: ignoreversio
 Source: "..\README.md"; DestDir: "{app}"; DestName: "README.txt"; Flags: ignoreversion
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}\Open LimeTrace"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autoprograms}\{#MyAppName}\LimeTrace"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autoprograms}\{#MyAppName}\Uninstall"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
@@ -44,7 +46,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [Run]
 Filename: "{app}\{#MyDaemonExeName}"; Description: "Start LimeTrace Backend now"; Flags: postinstall nowait skipifsilent
-Filename: "{app}\{#MyAppExeName}"; Description: "Open LimeTrace now"; Flags: postinstall skipifsilent
+Filename: "{app}\{#MyAppExeName}"; Description: "Start LimeTrace now"; Flags: postinstall skipifsilent
 
 [UninstallRun]
 Filename: "{cmd}"; Parameters: "/C taskkill /IM {#MyDaemonExeName} /F >nul 2>&1"; Flags: runhidden
