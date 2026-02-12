@@ -1,0 +1,57 @@
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build LimeTrace Backend
+        run: cargo build -p limetrace-backend --release
+
+      - name: Build LimeTrace
+        run: cargo build -p limetrace --release
+
+      - name: Package zip
+        shell: pwsh
+        run: ./scripts/package-windows.ps1
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Build installer exe
+        shell: pwsh
+        run: ./scripts/build-installer.ps1
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: limetrace-windows
+          path: dist/windows/limetrace-windows.zip
+          if-no-files-found: error
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: limetrace-setup
+          path: dist/installer/LimeTraceSetup.exe
+          if-no-files-found: error
+
+      - name: Publish release assets
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/installer/LimeTraceSetup.exe
+            dist/windows/limetrace-windows.zip

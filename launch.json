@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug LimeTrace Backend",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/limetrace-backend.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cargo: build workspace (debug)"
+    },
+    {
+      "name": "Debug LimeTrace",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/limetrace.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cargo: build workspace (debug)"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Backend + LimeTrace",
+      "configurations": [
+        "Debug LimeTrace Backend",
+        "Debug LimeTrace"
+      ]
+    }
+  ]
+}
