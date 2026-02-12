@@ -1,0 +1,11 @@
+[workspace]
+members = [
+  "crates/limetrace-backend",
+  "crates/limetrace",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+authors = ["LimeTrace"]
