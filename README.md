@@ -2,7 +2,7 @@
 
 English: [README.en.md](README.en.md)
 
-LimeTrace 是一个轻量化 Windows 桌面时间追踪工具，使用rust语言编写。
+LimeTrace 是使用rust语言编写的一个轻量化 Windows 桌面时间追踪工具。
 它会在后台记录你使用过的应用和时长，并在时间轴里展示出来。
 
 ![LimeTrace](ui.png)
@@ -37,3 +37,4 @@ LimeTrace 是一个轻量化 Windows 桌面时间追踪工具，使用rust语言
 - QQ: `1084490278`
 - Email: `jethuit@outlook.com`
 - 如果有问题请提交 issue。
+
