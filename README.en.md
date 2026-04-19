@@ -34,6 +34,5 @@ Windows only.
 
 ## Contact
 
-- QQ: `1084490278`
 - Email: `jethuit@outlook.com`
 - If you run into any issues, please open an issue.
