@@ -33,8 +33,7 @@ LimeTrace 是使用rust语言编写的一个轻量化 Windows 桌面时间追踪
 3. 如果能看到时间轴和应用时长，说明工作正常。
 
 ## 联系方式
-
-- QQ: `1084490278`
+
 - Email: `jethuit@outlook.com`
 - 如果有问题请提交 issue。
 
